@@ -1,0 +1,54 @@
+PODS:
+  - React (0.54.4):
+    - React/Core (= 0.54.4)
+  - React/Core (0.54.4):
+    - yoga (= 0.54.4.React)
+  - React/DevSupport (0.54.4):
+    - React/Core
+    - React/RCTWebSocket
+  - React/fishhook (0.54.4)
+  - React/RCTBlob (0.54.4):
+    - React/Core
+  - React/RCTImage (0.54.4):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTLinkingIOS (0.54.4):
+    - React/Core
+  - React/RCTNetwork (0.54.4):
+    - React/Core
+  - React/RCTText (0.54.4):
+    - React/Core
+  - React/RCTWebSocket (0.54.4):
+    - React/Core
+    - React/fishhook
+    - React/RCTBlob
+  - RNSensors (3.0.0):
+    - React
+  - yoga (0.54.4.React)
+
+DEPENDENCIES:
+  - React/DevSupport (from `../node_modules/react-native`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTLinkingIOS (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNSensors (from `../node_modules/react-native-sensors`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  RNSensors:
+    :path: "../node_modules/react-native-sensors"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
+  RNSensors: a63109958a2b0f3d60c895d15be35461ea59c4b9
+  yoga: 55da126afc384965b96bff46652464373b330add
+
+PODFILE CHECKSUM: abd1b8dbf3cef7d7793801f26ecb09b464622075
+
+COCOAPODS: 1.5.3
