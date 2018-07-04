@@ -1,6 +1,7 @@
 import React from 'react';
 import { Accelerometer, Gyroscope } from "react-native-sensors";
 import { StyleSheet, Text, View } from 'react-native';
+import KeepAwake from 'react-native-keep-awake';
 
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
@@ -17,7 +18,7 @@ export default class App extends React.Component {
       updateInterval: 400 // defaults to 100ms
     })
       .then(observable => {
-        observable.subscribe(({ x, y, z }) => this.setState({ ax: x, ay: y, az: z }));
+        observable.subscribe(({ x, y, z, timestamp }) => this.setState({ ax: x, ay: y, az: z, at: timestamp }));
       })
       .catch(error => {
         console.log("The sensor is not available");
@@ -25,12 +26,16 @@ export default class App extends React.Component {
 
     new Gyroscope({ updateInterval: 50
     }).then(observable => {
-       observable.subscribe(({x, y, z}) => this.setState({gx: x, gy: y, gz: z}));
+       observable.subscribe(({x, y, z, timestamp}) => this.setState({gx: x, gy: y, gz: z, gt: timestamp}));
     }).catch(error => {
 	console.log("Gyroscope is not available");
     });
 
-    this.state = { ax: 0, ay: 0, az: 0, gx: 0, gy: 0, gz: 0 };
+    this.state = { ax: 0, ay: 0, az: 0, at: 0, gx: 0, gy: 0, gz: 0, gt: 0 };
+  }
+  
+  componentDidMount() {
+    KeepAwake.activate();
   }
 
   render() {
@@ -40,11 +45,14 @@ export default class App extends React.Component {
         <Value name="ax" value={this.state.ax} />
         <Value name="ay" value={this.state.ay} />
         <Value name="az" value={this.state.az} />
+        <Value name="at" value={this.state.at} />
         <Text style={styles.headline}>Gyroscope values</Text>
         <Value name="gx" value={this.state.gx} />
         <Value name="gy" value={this.state.gy} />
-        <Value name="gz" value={this.state.gz} />
+        <Value name="gz" value={this.state.gz} /> 
+        <Value name="gt" value={this.state.gt} />
       </View>
+      
     );
   } 
 }

@@ -35,6 +35,7 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* SensorTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SensorTestTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		580EE19820ED73D30072C12A /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 580EE15420ED71C50072C12A /* libKCKeepAwake.a */; };
 		5885545520EBAE770013187D /* libRNSensors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5885545420EBAE270013187D /* libRNSensors.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		687B4EFB2B2A4B63972D1A5E /* libPods-SensorTest-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D29A6A94AEF149BC786F861 /* libPods-SensorTest-tvOS.a */; };
@@ -284,6 +285,13 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		580EE15320ED71C50072C12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = KCKeepAwake;
+		};
 		5885545320EBAE270013187D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5885542A20EBAE260013187D /* RNSensors.xcodeproj */;
@@ -356,6 +364,7 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C752B411CFF87F592CF32D /* Pods-SensorTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SensorTestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SensorTestTests/Pods-SensorTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		44931E0EF29B0228CACFF580 /* Pods-SensorTest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SensorTest-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SensorTest-tvOS/Pods-SensorTest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		5885542A20EBAE260013187D /* RNSensors.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSensors.xcodeproj; path = "../node_modules/react-native-sensors/ios/RNSensors.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -384,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580EE19820ED73D30072C12A /* libKCKeepAwake.a in Frameworks */,
 				5885545520EBAE770013187D /* libRNSensors.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -558,6 +568,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		580EE15020ED71C50072C12A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				580EE15420ED71C50072C12A /* libKCKeepAwake.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5885542B20EBAE260013187D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +605,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */,
 				5885542A20EBAE260013187D /* RNSensors.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -753,7 +772,13 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = DQ4W3E62M2;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = DQ4W3E62M2;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -778,6 +803,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 580EE15020ED71C50072C12A /* Products */;
+					ProjectRef = 580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1066,6 +1095,13 @@
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		580EE15420ED71C50072C12A /* libKCKeepAwake.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKCKeepAwake.a;
+			remoteRef = 580EE15320ED71C50072C12A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5885545420EBAE270013187D /* libRNSensors.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1315,6 +1351,11 @@
 			baseConfigurationReference = 0A5748442AEEBD9FD4CDEEFC /* Pods-SensorTestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DQ4W3E62M2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1327,6 +1368,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SensorTest.app/SensorTest";
 			};
 			name = Debug;
@@ -1336,7 +1378,11 @@
 			baseConfigurationReference = 32C752B411CFF87F592CF32D /* Pods-SensorTestTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DQ4W3E62M2;
 				INFOPLIST_FILE = SensorTestTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1345,6 +1391,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SensorTest.app/SensorTest";
 			};
 			name = Release;
@@ -1354,8 +1401,12 @@
 			baseConfigurationReference = CBE403EBB7777C45B1355F57 /* Pods-SensorTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DQ4W3E62M2;
 				INFOPLIST_FILE = SensorTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1363,7 +1414,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.sridharg;
 				PRODUCT_NAME = SensorTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1373,7 +1427,11 @@
 			baseConfigurationReference = DB9602E67569BEC3D371E68C /* Pods-SensorTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DQ4W3E62M2;
 				INFOPLIST_FILE = SensorTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1381,7 +1439,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.sridharg;
 				PRODUCT_NAME = SensorTest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
