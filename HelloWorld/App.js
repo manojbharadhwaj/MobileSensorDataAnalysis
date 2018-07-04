@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accelerometer } from "react-native-sensors";
+import { Accelerometer, Gyroscope } from "react-native-sensors";
 import { StyleSheet, Text, View } from 'react-native';
 
 const Value = ({ name, value }) => (
@@ -17,22 +17,33 @@ export default class App extends React.Component {
       updateInterval: 400 // defaults to 100ms
     })
       .then(observable => {
-        observable.subscribe(({ x, y, z }) => this.setState({ x, y, z }));
+        observable.subscribe(({ x, y, z }) => this.setState({ ax: x, ay: y, az: z }));
       })
       .catch(error => {
         console.log("The sensor is not available");
       });
 
-    this.state = { x: 0, y: 0, z: 0 };
+    new Gyroscope({ updateInterval: 50
+    }).then(observable => {
+       observable.subscribe(({x, y, z}) => this.setState({gx: x, gy: y, gz: z}));
+    }).catch(error => {
+	console.log("Gyroscope is not available");
+    });
+
+    this.state = { ax: 0, ay: 0, az: 0, gx: 0, gy: 0, gz: 0 };
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.headline}>Accelerometer values</Text>
-        <Value name="x" value={this.state.x} />
-        <Value name="y" value={this.state.y} />
-        <Value name="z" value={this.state.z} />
+        <Value name="ax" value={this.state.ax} />
+        <Value name="ay" value={this.state.ay} />
+        <Value name="az" value={this.state.az} />
+        <Text style={styles.headline}>Gyroscope values</Text>
+        <Value name="gx" value={this.state.gx} />
+        <Value name="gy" value={this.state.gy} />
+        <Value name="gz" value={this.state.gz} />
       </View>
     );
   } 
