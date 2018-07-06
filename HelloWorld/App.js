@@ -2,6 +2,7 @@ import React from 'react';
 import { Magnetometer, Accelerometer, Gyroscope } from "react-native-sensors";
 import { StyleSheet, Text, View, Button, Picker} from 'react-native';
 import KeepAwake from 'react-native-keep-awake';
+import RNFS from 'react-native-fs';
 
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
@@ -21,10 +22,22 @@ sample_length_in_msec = 5000;
 interval_in_msec = 20;
 datapoints = sample_length_in_msec / interval_in_msec;
 start_t = 0;
+available_modes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+dir_root = RNFS.DocumentDirectoryPath + "/msa";
+dir_prefix = RNFS.DocumentDirectoryPath +  "/msa/mode";
+
+function initialize() {
+   // Create directories, one for each transport mode.
+   for (mode in available_modes) {
+      RNFS.mkdir(dir_prefix + mode); 
+   }
+}
+
+initialize();
 
 export default class App extends React.Component {
   
-   log_data(x, y, z, t, type) {
+   log_data(x, y, z, t, type, mode) {
       if (type == 'M') {
         if (mag_t < t && mag_data.length < datapoints) {
             mag_data.push([x, y, z]);
@@ -43,7 +56,21 @@ export default class App extends React.Component {
       }
       if (mag_data.length == datapoints && gyr_data.length == datapoints && acc_data.length == datapoints) {
           if (this.state.started) {
-             console.log("Uploading...");
+             today = new Date();
+             day = today.getDate();
+             month = today.getMonth() + 1;
+             year = today.getFullYear();
+             mode =  this.state.transport_mode;
+             fileName = dir_prefix + mode + "/" + (year + "" + (month < 10 ? ("0" + month) : month) + "" + (day < 10 ? ("0" + day) : day)) + ".log";
+             console.log("Filename: " + fileName);
+             contents = "";
+             for (i=0;i<mag_data.length;i++) {
+                 contents += acc_data[i][0] + "," + acc_data[i][1] + "," + acc_data[i][2] + "," + gyr_data[i][0] + "," + gyr_data[i][1] + "," + gyr_data[i][2] + "," + mag_data[i][0] + "," + mag_data[i][1] + "," + mag_data[i][2] + "\n";
+             }
+             RNFS.write(fileName, contents).then(()=>{
+               RNFS.stat(fileName).then((result) => { console.log("Stat: ", result.size, result.path)});
+             }).catch((err) => {});
+             console.log("File written!");
              this.samples++;
              if (this.samples >= total_samples) {
                 this.toggle_and_reset();
