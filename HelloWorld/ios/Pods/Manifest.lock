@@ -1,6 +1,37 @@
 PODS:
+  - Firebase/Core (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.4.0):
+    - FirebaseCore (= 5.0.5)
+  - Firebase/Storage (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.0)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.5):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.1.1):
+    - FirebaseCore (~> 5.0)
+  - FirebaseStorage (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GTMSessionFetcher/Core (1.1.15)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - React (0.54.4):
     - React/Core (= 0.54.4)
+  - react-native-keep-awake (3.0.1):
+    - React
   - React/Core (0.54.4):
     - yoga (= 0.54.4.React)
   - React/DevSupport (0.54.4):
@@ -22,33 +53,76 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNFS (2.10.14):
+    - React
   - RNSensors (3.0.0):
+    - React
+  - RNZipArchive (2.2.6):
+    - React
+    - RNZipArchive/Core (= 2.2.6)
+    - RNZipArchive/RNZASSZipArchive (= 2.2.6)
+  - RNZipArchive/Core (2.2.6):
+    - React
+  - RNZipArchive/RNZASSZipArchive (2.2.6):
     - React
   - yoga (0.54.4.React)
 
 DEPENDENCIES:
+  - Firebase/Core
+  - Firebase/Storage
+  - react-native-keep-awake (from `../node_modules/react-native-keep-awake`)
   - React/DevSupport (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
   - React/RCTLinkingIOS (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNSensors (from `../node_modules/react-native-sensors`)
+  - RNZipArchive (from `../node_modules/react-native-zip-archive`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseStorage
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - nanopb
 
 EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
+  react-native-keep-awake:
+    :path: "../node_modules/react-native-keep-awake"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNSensors:
     :path: "../node_modules/react-native-sensors"
+  RNZipArchive:
+    :path: "../node_modules/react-native-zip-archive"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
+  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
+  FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
+  react-native-keep-awake: 0de4bd66de0c23178107dce0c2fcc3354b2a8e94
+  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
   RNSensors: a63109958a2b0f3d60c895d15be35461ea59c4b9
+  RNZipArchive: 4f72d162e01ba473a6c2365b4e949183fd208f35
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: abd1b8dbf3cef7d7793801f26ecb09b464622075
+PODFILE CHECKSUM: 50313bfa3ef596bb9c67153387e7d97d0f492a4c
 
 COCOAPODS: 1.5.3

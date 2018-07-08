@@ -3,6 +3,8 @@ package com.sensortest;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage; 
 import com.rnziparchive.RNZipArchivePackage;
 import com.rnfs.RNFSPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
@@ -27,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
+            new RNFirebaseStoragePackage(),
             new RNZipArchivePackage(),
             new RNFSPackage(),
             new KCKeepAwakePackage(),

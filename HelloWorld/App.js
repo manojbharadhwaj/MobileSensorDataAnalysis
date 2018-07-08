@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, Button, Picker} from 'react-native';
 import KeepAwake from 'react-native-keep-awake';
 import RNFS from 'react-native-fs';
 import {zip} from 'react-native-zip-archive';
+import { AsyncStorage, TextInput } from 'react-native';
+import firebase from 'react-native-firebase';
+
+storage = firebase.storage();
 
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
@@ -81,11 +85,14 @@ export default class App extends React.Component {
                     // Zip the file and delete the .log file and try to upload the file.
                     const sourcePath = sampleFileName;
                     const targetPath = sourcePath.replace(/log$/, "zip");
+                    const referencePath = sourcePath.replace(dir_prefix + this.state.transport_mode, "");
                     console.log("zip file name: ", targetPath);
                     zip(sourcePath, targetPath)
                        .then((path) => {
                            console.log("zip completed at ", path);
                            RNFS.unlink(sourcePath).then(() => {console.log("File deleted! ", sourcePath);}).catch((err) => {console.log("unable to delete file", sourcePath, err.message);});
+                           console.log("Reference path: ", referencePath);
+                           storage.ref(referencePath).putFile(targetPath).then(() => console.log("Uploaded file!", referencePath)).catch((err) => console.log(err));
                        })
                        .catch((error) => {
                            console.log("Error while zipping", error)
@@ -130,7 +137,7 @@ export default class App extends React.Component {
      }.bind(this)).catch(error => {
         console.log("Magnetometer is not available");
      });
-     this.state = {started: false, transport_mode: 0};
+     this.state = {started: false, transport_mode: 0, gcpkey: ""};
   }
   
   toggle_and_reset() {
@@ -153,14 +160,28 @@ export default class App extends React.Component {
   
   componentDidMount() {
       KeepAwake.deactivate();
+      AsyncStorage.getItem('msa:gcpkey', function(err, result) {
+         if (result) {
+           this.setState({gcpkey: result});
+         }
+      }.bind(this));
+  }
+
+  setGCPKey(gcpkey) {
+      gcpkey = gcpkey.trim();
+      AsyncStorage.setItem('msa:gcpkey', gcpkey, () => {
+         this.setState({gcpkey: gcpkey});
+      });
   }
 
   render() {
     return (
        <View style={styles.container}>
-          <Value name="Runtime" value="5 minutes"/>
-          <Value name="Sample size" value="5 seconds"/>
-          <Value name="Sample interval" value="0.02 seconds"/>
+          <TextInput
+             style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1}}
+             onChangeText={(text) => this.setGCPKey(text)}
+             value={this.state.gcpkey}
+          />
           <Picker
             selectedValue={this.state.transport_mode}
             style={{width: 200, height: 10}}

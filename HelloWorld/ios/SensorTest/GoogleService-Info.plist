@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>840323588432-e21dn0qgo12vsv5qsaiqkr5j208cdsub.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.840323588432-e21dn0qgo12vsv5qsaiqkr5j208cdsub</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC2sufduwb4WuGWijUksjmL6dnGkAA3Kz4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>840323588432</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.sridharg</string>
+	<key>PROJECT_ID</key>
+	<string>mobilesensordataanalysis</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mobilesensordataanalysis.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:840323588432:ios:03ae423e56d26d00</string>
+	<key>DATABASE_URL</key>
+	<string>https://mobilesensordataanalysis.firebaseio.com</string>
+</dict>
+</plist>

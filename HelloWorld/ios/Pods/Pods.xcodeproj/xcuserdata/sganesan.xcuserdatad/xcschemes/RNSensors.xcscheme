@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4426A209B54D2CE645B2674575702B56"
+               BlueprintIdentifier = "B7789A0664CFE468B123ECE83BACC3F2"
                BlueprintName = "RNSensors"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libRNSensors.a">
