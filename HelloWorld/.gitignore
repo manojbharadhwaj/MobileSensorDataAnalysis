@@ -7,6 +7,9 @@
 /node_modules
 
 /ios/build
+/ios/Pods
+/ios/SensorTest/GoogleService-Info.plist
+/android/app/google-services.json
 
 # misc
 .env.local

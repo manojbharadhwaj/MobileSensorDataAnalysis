@@ -92,7 +92,7 @@ export default class App extends React.Component {
                            console.log("zip completed at ", path);
                            RNFS.unlink(sourcePath).then(() => {console.log("File deleted! ", sourcePath);}).catch((err) => {console.log("unable to delete file", sourcePath, err.message);});
                            console.log("Reference path: ", referencePath);
-                           storage.ref(referencePath).putFile(targetPath).then(() => console.log("Uploaded file!", referencePath)).catch((err) => console.log("Unable to upload", err.message));
+                           storage.ref(referencePath).putFile(targetPath).then(() => RNFS.unlink(targetPath).then(() => console.log("File uploaded and deleted!", targetPath))).catch((err) => console.log("Unable to upload", err.message));
                        })
                        .catch((error) => {
                            console.log("Error while zipping", error)
