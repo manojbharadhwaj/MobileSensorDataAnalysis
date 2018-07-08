@@ -85,14 +85,14 @@ export default class App extends React.Component {
                     // Zip the file and delete the .log file and try to upload the file.
                     const sourcePath = sampleFileName;
                     const targetPath = sourcePath.replace(/log$/, "zip");
-                    const referencePath = sourcePath.replace(dir_prefix + this.state.transport_mode, "");
+                    const referencePath = targetPath.replace(dir_root, "");
                     console.log("zip file name: ", targetPath);
                     zip(sourcePath, targetPath)
                        .then((path) => {
                            console.log("zip completed at ", path);
                            RNFS.unlink(sourcePath).then(() => {console.log("File deleted! ", sourcePath);}).catch((err) => {console.log("unable to delete file", sourcePath, err.message);});
                            console.log("Reference path: ", referencePath);
-                           storage.ref(referencePath).putFile(targetPath).then(() => console.log("Uploaded file!", referencePath)).catch((err) => console.log(err));
+                           storage.ref(referencePath).putFile(targetPath).then(() => console.log("Uploaded file!", referencePath)).catch((err) => console.log("Unable to upload", err.message));
                        })
                        .catch((error) => {
                            console.log("Error while zipping", error)
