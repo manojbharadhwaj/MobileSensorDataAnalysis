@@ -177,11 +177,6 @@ export default class App extends React.Component {
   render() {
     return (
        <View style={styles.container}>
-          <TextInput
-             style={{height: 40, width: 200, borderColor: 'gray', borderWidth: 1}}
-             onChangeText={(text) => this.setGCPKey(text)}
-             value={this.state.gcpkey}
-          />
           <Picker
             selectedValue={this.state.transport_mode}
             style={{width: 200, height: 10}}
