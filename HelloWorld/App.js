@@ -3,6 +3,7 @@ import { Magnetometer, Accelerometer, Gyroscope } from "react-native-sensors";
 import { StyleSheet, Text, View, Button, Picker} from 'react-native';
 import KeepAwake from 'react-native-keep-awake';
 import RNFS from 'react-native-fs';
+import {zip} from 'react-native-zip-archive';
 
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
@@ -31,6 +32,13 @@ function initialize() {
    // Create directories, one for each transport mode.
    for (mode in available_modes) {
       RNFS.mkdir(dir_prefix + mode); 
+      RNFS.readDir(dir_prefix + mode).then((result) => {
+         for (item_no = 0; item_no < result.length ; item_no++) {
+            console.log("filelist", result[item_no].path, result[item_no].size); 
+         } 
+      }).catch((err) => {
+        
+      });
    }
 }
 
@@ -71,7 +79,17 @@ export default class App extends React.Component {
                  console.log("Logged file: " + sampleFileName);
                  if (this.samples >= total_samples) {
                     // Zip the file and delete the .log file and try to upload the file.
-                   
+                    const sourcePath = sampleFileName;
+                    const targetPath = sourcePath.replace(/log$/, "zip");
+                    console.log("zip file name: ", targetPath);
+                    zip(sourcePath, targetPath)
+                       .then((path) => {
+                           console.log("zip completed at ", path);
+                           RNFS.unlink(sourcePath).then(() => {console.log("File deleted! ", sourcePath);}).catch((err) => {console.log("unable to delete file", sourcePath, err.message);});
+                       })
+                       .catch((error) => {
+                           console.log("Error while zipping", error)
+                    });       
                  }
              }.bind(this)).catch((err) => {});
              console.log("File written!");
