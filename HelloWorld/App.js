@@ -25,6 +25,7 @@ start_t = 0;
 available_modes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 dir_root = RNFS.DocumentDirectoryPath + "/msa";
 dir_prefix = RNFS.DocumentDirectoryPath +  "/msa/mode";
+sampleFileName = "";
 
 function initialize() {
    // Create directories, one for each transport mode.
@@ -61,15 +62,18 @@ export default class App extends React.Component {
              month = today.getMonth() + 1;
              year = today.getFullYear();
              mode =  this.state.transport_mode;
-             fileName = dir_prefix + mode + "/" + (year + "" + (month < 10 ? ("0" + month) : month) + "" + (day < 10 ? ("0" + day) : day)) + ".log";
-             console.log("Filename: " + fileName);
+             time_in_millis = Date.now();
              contents = "";
              for (i=0;i<mag_data.length;i++) {
                  contents += acc_data[i][0] + "," + acc_data[i][1] + "," + acc_data[i][2] + "," + gyr_data[i][0] + "," + gyr_data[i][1] + "," + gyr_data[i][2] + "," + mag_data[i][0] + "," + mag_data[i][1] + "," + mag_data[i][2] + "\n";
              }
-             RNFS.write(fileName, contents).then(()=>{
-               RNFS.stat(fileName).then((result) => { console.log("Stat: ", result.size, result.path)});
-             }).catch((err) => {});
+             RNFS.write(sampleFileName, contents).then(function(){
+                 console.log("Logged file: " + sampleFileName);
+                 if (this.samples >= total_samples) {
+                    // Zip the file and delete the .log file and try to upload the file.
+                   
+                 }
+             }.bind(this)).catch((err) => {});
              console.log("File written!");
              this.samples++;
              if (this.samples >= total_samples) {
@@ -121,6 +125,8 @@ export default class App extends React.Component {
      started = !this.state.started;
      this.setState({started: started});
      if (started) {
+        time_in_millis = Date.now();
+        sampleFileName = dir_prefix + this.state.transport_mode + "/" + time_in_millis + "" + (Math.floor(Math.random() * 10000) + 1) + ".log";
         KeepAwake.activate();
      } else {
         KeepAwake.deactivate();

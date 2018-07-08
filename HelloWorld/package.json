@@ -22,6 +22,7 @@
     "react-native": "~0.54.2",
     "react-native-fs": "^2.10.14",
     "react-native-keep-awake": "^3.0.1",
-    "react-native-sensors": "^3.0.0"
+    "react-native-sensors": "^3.0.0",
+    "react-native-zip-archive": "^2.2.6"
   }
 }
