@@ -22,6 +22,8 @@ target 'SensorTest' do
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'RNZipArchive', :path => '../node_modules/react-native-zip-archive'
+
   target 'SensorTestTests' do
     inherit! :search_paths
     # Pods for testing

@@ -38,6 +38,7 @@
 		580EE19820ED73D30072C12A /* libKCKeepAwake.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 580EE15420ED71C50072C12A /* libKCKeepAwake.a */; };
 		580EE1C820EFC4630072C12A /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 580EE1C520EFC4430072C12A /* libRNFS.a */; };
 		580EE1C920EFC4630072C12A /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 580EE1C720EFC4430072C12A /* libRNFS.a */; };
+		580EE1D020F29B930072C12A /* libRNZipArchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 580EE1CF20F29B7F0072C12A /* libRNZipArchive.a */; };
 		5885545520EBAE770013187D /* libRNSensors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5885545420EBAE270013187D /* libRNSensors.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		687B4EFB2B2A4B63972D1A5E /* libPods-SensorTest-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D29A6A94AEF149BC786F861 /* libPods-SensorTest-tvOS.a */; };
@@ -308,6 +309,13 @@
 			remoteGlobalIDString = 6456441F1EB8DA9100672408;
 			remoteInfo = "RNFS-tvOS";
 		};
+		580EE1CE20F29B7F0072C12A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 580EE1CA20F29B7F0072C12A /* RNZipArchive.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D061F22A1E4887C4000350B4;
+			remoteInfo = RNZipArchive;
+		};
 		5885545320EBAE270013187D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5885542A20EBAE260013187D /* RNSensors.xcodeproj */;
@@ -382,6 +390,7 @@
 		44931E0EF29B0228CACFF580 /* Pods-SensorTest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SensorTest-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SensorTest-tvOS/Pods-SensorTest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KCKeepAwake.xcodeproj; path = "../node_modules/react-native-keep-awake/ios/KCKeepAwake.xcodeproj"; sourceTree = "<group>"; };
 		580EE1BF20EFC4430072C12A /* RNFS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
+		580EE1CA20F29B7F0072C12A /* RNZipArchive.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNZipArchive.xcodeproj; path = "../node_modules/react-native-zip-archive/ios/RNZipArchive.xcodeproj"; sourceTree = "<group>"; };
 		5885542A20EBAE260013187D /* RNSensors.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSensors.xcodeproj; path = "../node_modules/react-native-sensors/ios/RNSensors.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -410,6 +419,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580EE1D020F29B930072C12A /* libRNZipArchive.a in Frameworks */,
 				580EE1C820EFC4630072C12A /* libRNFS.a in Frameworks */,
 				580EE1C920EFC4630072C12A /* libRNFS.a in Frameworks */,
 				580EE19820ED73D30072C12A /* libKCKeepAwake.a in Frameworks */,
@@ -604,6 +614,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		580EE1CB20F29B7F0072C12A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				580EE1CF20F29B7F0072C12A /* libRNZipArchive.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5885542B20EBAE260013187D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +651,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				580EE1CA20F29B7F0072C12A /* RNZipArchive.xcodeproj */,
 				580EE1BF20EFC4430072C12A /* RNFS.xcodeproj */,
 				580EE14F20ED71C50072C12A /* KCKeepAwake.xcodeproj */,
 				5885542A20EBAE260013187D /* RNSensors.xcodeproj */,
@@ -892,6 +911,10 @@
 					ProductGroup = 5885542B20EBAE260013187D /* Products */;
 					ProjectRef = 5885542A20EBAE260013187D /* RNSensors.xcodeproj */;
 				},
+				{
+					ProductGroup = 580EE1CB20F29B7F0072C12A /* Products */;
+					ProjectRef = 580EE1CA20F29B7F0072C12A /* RNZipArchive.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1147,6 +1170,13 @@
 			fileType = archive.ar;
 			path = libRNFS.a;
 			remoteRef = 580EE1C620EFC4430072C12A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		580EE1CF20F29B7F0072C12A /* libRNZipArchive.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNZipArchive.a;
+			remoteRef = 580EE1CE20F29B7F0072C12A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5885545420EBAE270013187D /* libRNSensors.a */ = {

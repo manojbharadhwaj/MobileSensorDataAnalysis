@@ -3,6 +3,7 @@ package com.sensortest;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnziparchive.RNZipArchivePackage;
 import com.rnfs.RNFSPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.sensors.RNSensorsPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNZipArchivePackage(),
             new RNFSPackage(),
             new KCKeepAwakePackage(),
             new RNSensorsPackage()
