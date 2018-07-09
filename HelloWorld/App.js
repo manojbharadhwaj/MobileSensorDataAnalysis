@@ -36,13 +36,13 @@ function initialize() {
    // Create directories, one for each transport mode.
    for (mode in available_modes) {
       RNFS.mkdir(dir_prefix + mode); 
-      RNFS.readDir(dir_prefix + mode).then((result) => {
+/*      RNFS.readDir(dir_prefix + mode).then((result) => {
          for (item_no = 0; item_no < result.length ; item_no++) {
             console.log("filelist", result[item_no].path, result[item_no].size); 
          } 
       }).catch((err) => {
         
-      });
+      }); */
    }
 }
 
