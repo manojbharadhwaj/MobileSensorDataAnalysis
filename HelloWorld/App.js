@@ -12,7 +12,7 @@ storage = firebase.storage();
 const Value = ({ name, value }) => (
   <View style={styles.valueContainer}>
     <Text style={styles.valueName}>{name}:</Text>
-    <Text style={styles.valueValue}>{new String(value).substr(0, 8)}</Text>
+    <Text style={styles.valueValue}>{value}</Text>
   </View>
 );
 
@@ -22,7 +22,7 @@ gyr_data = [];
 gyr_t = 0;
 mag_data = [];
 mag_t = 0;
-total_samples = 1; 
+total_samples = 12; 
 sample_length_in_msec = 5000;
 interval_in_msec = 20;
 datapoints = sample_length_in_msec / interval_in_msec;
@@ -87,20 +87,24 @@ export default class App extends React.Component {
                     const targetPath = sourcePath.replace(/log$/, "zip");
                     const referencePath = targetPath.replace(dir_root, "");
                     console.log("zip file name: ", targetPath);
+                    this.setState({status: "Zipping the sample data file"});
                     zip(sourcePath, targetPath)
-                       .then((path) => {
+                       .then(function(path)  {
                            console.log("zip completed at ", path);
+                           this.setState({status: "Trying to upload the compressed file"});
                            RNFS.unlink(sourcePath).then(() => {console.log("File deleted! ", sourcePath);}).catch((err) => {console.log("unable to delete file", sourcePath, err.message);});
                            console.log("Reference path: ", referencePath);
-                           storage.ref(referencePath).putFile(targetPath).then(() => RNFS.unlink(targetPath).then(() => console.log("File uploaded and deleted!", targetPath))).catch((err) => console.log("Unable to upload", err.message));
-                       })
+                           storage.ref(referencePath).putFile(targetPath).then(function() { this.setState({status: "Data sample uploaded! Press start to collect another sample!"}); RNFS.unlink(targetPath).then(() => console.log("File uploaded and deleted!", targetPath))}.bind(this)).catch((err) => console.log("Unable to upload", err.message));
+                       }.bind(this))
                        .catch((error) => {
+			   this.setState({status: "Error while zipping the file"});
                            console.log("Error while zipping", error)
                     });       
                  }
              }.bind(this)).catch((err) => {});
              console.log("File written!");
              this.samples++;
+             this.setState({status: "Collected " + this.samples + "/" + total_samples + " samples. Time remaining: " + ((total_samples - this.samples) * sample_length_in_msec / 1000 ) + " seconds."});
              if (this.samples >= total_samples) {
                 this.toggle_and_reset();
              }
@@ -137,7 +141,7 @@ export default class App extends React.Component {
      }.bind(this)).catch(error => {
         console.log("Magnetometer is not available");
      });
-     this.state = {started: false, transport_mode: 0, gcpkey: ""};
+     this.state = {started: false, transport_mode: 0, gcpkey: "", status: "Select what you are doing now and press start to collect data"};
   }
   
   toggle_and_reset() {
@@ -153,8 +157,10 @@ export default class App extends React.Component {
         time_in_millis = Date.now();
         sampleFileName = dir_prefix + this.state.transport_mode + "/" + time_in_millis + "" + (Math.floor(Math.random() * 10000) + 1) + ".log";
         KeepAwake.activate();
+        this.setState({status: "Starting to collect data"});
      } else {
         KeepAwake.deactivate();
+        this.setState({status: "Select what you are doing now and press start to collect data"});
      }
   }
   
@@ -196,6 +202,7 @@ export default class App extends React.Component {
             <Picker.Item label="Boat" value="12" />
           </Picker>
           <Button title={this.state.started? "Stop" : "Start"} onPress={() => this.toggle_and_reset()} />
+          <Value name="status" value={this.state.status} />
        </View>
      /*
       <View style={styles.container}>
@@ -237,7 +244,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   },
   valueValue: {
-    width: 200,
+    width: 300,
     fontSize: 10
   },
   valueName: {
